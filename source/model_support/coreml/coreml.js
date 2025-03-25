@@ -1,5 +1,5 @@
 
-import * as base from './base.js';
+import * as base from '../../base.js';
 
 const coreml = {};
 

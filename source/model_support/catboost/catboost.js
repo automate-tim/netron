@@ -1,5 +1,5 @@
 
-import * as python from './python.js';
+import * as python from '../../python.js';
 
 const catboost = {};
 

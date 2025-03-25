@@ -6,9 +6,9 @@ const coreml = {};
 const vulkan = {};
 const xnnpack = {};
 
-import * as base from './base.js';
-import * as python from './python.js';
-import * as pytorch from './pytorch.js';
+import * as base from '../../base.js';
+import * as python from '../../python.js';
+import * as pytorch from '../../pytorch.js';
 
 executorch.ModelFactory = class {
 
@@ -415,7 +415,7 @@ xnnpack.Reader = class {
 
     async read() {
         this.reader.seek(this.flatbuffer.offset);
-        const flatbuffers = await import('./flatbuffers.js');
+        const flatbuffers = await import('../../flatbuffers.js');
         const data = this.reader.read(this.flatbuffer.size);
         const reader = flatbuffers.BinaryReader.open(data);
         if (!executorch.schema.fb_xnnpack.XNNGraph.identifier(reader)) {
@@ -635,7 +635,7 @@ vulkan.Reader = class {
         this.reader.seek(this.flatbuffer.offset);
         const metadata = new vulkan.Metadata(this.target.execution);
         metadata.register('conv_with_clamp(Tensor input, Tensor weight, Tensor? bias, SymInt[] stride, SymInt[] padding, SymInt[] dilation, bool transposed, SymInt[] output_padding, SymInt groups, Scalar? output_min, Scalar? output_max) -> Tensor)');
-        const flatbuffers = await import('./flatbuffers.js');
+        const flatbuffers = await import('../../flatbuffers.js');
         const data = this.reader.read(this.flatbuffer.size);
         const reader = flatbuffers.BinaryReader.open(data);
         if (!executorch.schema.vkgraph.VkGraph.identifier(reader)) {
@@ -854,7 +854,7 @@ coreml.Reader = class {
     async read() {
         const entries = this.entries(this.reader);
         const factory = await this.factory();
-        const protobuf = await import('./protobuf.js');
+        const protobuf = await import('../../protobuf.js');
         for (const [key, value] of entries) {
             const path = key.split('/');
             const identifier = path.pop();
