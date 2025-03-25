@@ -15,6 +15,7 @@
     "main": "source/app.js",
     "scripts": {
         "start": "node package.js start",
+        "start:web": "node package.js start web",
         "server": "python package.py build start",
         "test": "node test/models.js",
         "lint": "node package.js lint",
@@ -23,6 +24,7 @@
         "purge": "node package.js purge",
         "install": "node package.js install",
         "build": "node package.js build",
+        "build:web": "node package.js build web",
         "publish": "node package.js publish",
         "version": "node package.js version",
         "coverage": "node package.js coverage",

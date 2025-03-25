@@ -1,0 +1,5 @@
+services:
+  netron-web:
+    build: . # Build from the Dockerfile in the current directory
+    ports:
+      - "8080:8080"
